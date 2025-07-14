@@ -1,19 +1,13 @@
-import type { SudokuPuzzle } from "../types/Sudoku";
+import type { SudokuGrid } from "../types/Sudoku";
 
-export const fetchSudokuById = async (id: number): Promise<SudokuPuzzle> => {
-  const res = await fetch(`/sudoku${id}.txt`);
-  if (!res.ok) throw new Error(`Datei sudoku${id}.txt nicht gefunden`);
-  const text = await res.text();
+export const loadSudoku = async (filename: string): Promise<SudokuGrid> => {
+  const response = await fetch(`../public/${filename}`);
+  const text = await response.text();
 
-  const lines = text.trim().split("\n");
-  if (lines.length !== 9) throw new Error(`Ungültiges Format in sudoku${id}.txt`);
+  const rows = text
+    .trim()
+    .split("\n")
+    .map(line => line.trim().split("").map(Number));
 
-  const grid = lines.map(line =>
-    line.trim().split("").map(char => parseInt(char, 10))
-  );
-
-  return {
-    id: id.toString(),
-    grid,
-  };
+  return rows;
 };
