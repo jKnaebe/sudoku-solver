@@ -16,8 +16,6 @@ export function solveSudoku(grid: number[][]): number[][] {
           result[row][col] = candidates[0];
           changed = true;
         }
-
-        // Strategy 2: Hidden Single (handled below)
       }
     }
 
