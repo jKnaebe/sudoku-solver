@@ -1,25 +1,37 @@
-import React from "react";
-import type { SudokuGrid as Grid } from "../types/Sudoku";
+import React from 'react';
+import type { SudokuGrid as Grid } from '../types/Sudoku';
 
-interface Props {
+interface SudokuGridProps {
   grid: Grid;
+  initialGrid: Grid;
 }
 
-export const SudokuGrid: React.FC<Props> = ({ grid }) => {
+const SudokuGrid: React.FC<SudokuGridProps> = ({ grid, initialGrid }) => {
   return (
-    <div className="grid grid-cols-9 gap-[1px] bg-black max-w-fit mx-auto mt-4">
+    <div className="inline-grid grid-cols-9 border border-black">
       {grid.map((row, rowIndex) =>
         row.map((cell, colIndex) => {
-          const isPrefilled = cell !== 0;
+          const isTopBorderThick = rowIndex % 3 === 0;
+          const isLeftBorderThick = colIndex % 3 === 0;
+          const isRightEdge = colIndex === 8;
+          const isBottomEdge = rowIndex === 8;
+
+          const isGiven = initialGrid[rowIndex][colIndex] !== 0;
 
           return (
             <div
               key={`${rowIndex}-${colIndex}`}
-              className={`w-10 h-10 flex items-center justify-center text-lg ${
-                isPrefilled ? "bg-gray-200 font-bold" : "bg-white"
-              }`}
+              className={`
+                w-10 h-10 flex items-center justify-center text-lg
+                ${isGiven ? 'bg-gray-200 font-bold' : 'bg-white'}
+                ${isTopBorderThick ? 'border-t-2' : 'border-t'}
+                ${isLeftBorderThick ? 'border-l-2' : 'border-l'}
+                ${isRightEdge ? 'border-r-2' : ''}
+                ${isBottomEdge ? 'border-b-2' : ''}
+                border-black
+              `}
             >
-              {cell !== 0 ? cell : ""}
+              {cell !== 0 ? cell : ''}
             </div>
           );
         })
@@ -27,3 +39,5 @@ export const SudokuGrid: React.FC<Props> = ({ grid }) => {
     </div>
   );
 };
+
+export default SudokuGrid;
