@@ -11,7 +11,7 @@ export function solveSudoku(grid: number[][]): number[][] {
 
         const candidates = getCandidates(result, row, col);
 
-        // Strategy 1: Single Candidate
+        // Wenn nur eine Zahl passt, wird diese direkt eingetragen
         if (candidates.length === 1) {
           result[row][col] = candidates[0];
           changed = true;
@@ -19,9 +19,9 @@ export function solveSudoku(grid: number[][]): number[][] {
       }
     }
 
-    // Strategy 2: Hidden Singles
+    // Wenn es mehrere Kandidaten gibt für dieses Feld, aber trotzdem ermittelt wird das eine Zahl hier reinkommt
     for (let num = 1; num <= 9; num++) {
-      // Check each row
+      //Durchlaufen aller Zeilen
       for (let row = 0; row < 9; row++) {
         const positions = [];
         for (let col = 0; col < 9; col++) {
@@ -35,7 +35,7 @@ export function solveSudoku(grid: number[][]): number[][] {
         }
       }
 
-      // Check each column
+      // Durchlaufen aller Spalten
       for (let col = 0; col < 9; col++) {
         const positions = [];
         for (let row = 0; row < 9; row++) {
@@ -49,7 +49,7 @@ export function solveSudoku(grid: number[][]): number[][] {
         }
       }
 
-      // Check each block
+      // Durchlaufen aller 3x3 Blöcke
       for (let blockRow = 0; blockRow < 3; blockRow++) {
         for (let blockCol = 0; blockCol < 3; blockCol++) {
           const positions = [];
