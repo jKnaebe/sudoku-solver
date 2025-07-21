@@ -7,15 +7,13 @@ export async function fetchSudoku(filename: string): Promise<number[][]> {
 
   const content = await response.text();
 
-  // Debug: Dateiinhalt anzeigen
   console.log(`Dateiinhalt von ${filename}:`);
   console.log(JSON.stringify(content));
 
-  // Optional: BOM entfernen
-  const withoutBOM = content.replace(/^\uFEFF/, '');
+  // Entferne BOM (Byte Order Mark) falls vorhanden
+  const removeBOM = content.replace(/^\uFEFF/, '');
 
-  // Ziffern extrahieren
-  const digits = withoutBOM
+  const digits = removeBOM
     .split('')
     .filter((c) => c >= '0' && c <= '9')
     .map((c) => Number(c));
