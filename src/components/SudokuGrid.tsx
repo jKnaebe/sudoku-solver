@@ -1,4 +1,3 @@
-import React from 'react';
 import type { SudokuGrid as Grid } from '../types/Sudoku';
 
 interface SudokuGridProps {
@@ -6,7 +5,7 @@ interface SudokuGridProps {
   initialGrid: Grid;
 }
 
-const SudokuGrid: React.FC<SudokuGridProps> = ({ grid, initialGrid }) => {
+const SudokuGrid = ({ grid, initialGrid }:SudokuGridProps) => {
   return (
     <div className="inline-grid grid-cols-9 border border-black">
       {grid.map((row, rowIndex) =>

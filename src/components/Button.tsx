@@ -13,12 +13,12 @@ const variantClasses = {
   secondary: "bg-green-500 hover:bg-green-600 text-white",
 };
 
-const Button: React.FC<ButtonProps> = ({
+const Button  = ({
   onClick,
   children,
   variant = 'primary',
   className = '',
-}) => {
+}: ButtonProps) => {
   const combinedClassName = `${baseClasses} ${variantClasses[variant]} ${className}`;
 
   return (

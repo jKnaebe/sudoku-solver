@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SudokuGrid from './components/SudokuGrid';
 import Button from './components/Button';
 import { fetchSudoku } from './services/SudokuService';
 import { solveSudoku } from './logic/SudokuSolver';
 import type { SudokuGrid as GridType } from './types/Sudoku';
 
-const App: React.FC = () => {
+const App = () => {
   const [initialGrid, setInitialGrid] = useState<GridType | null>(null);
   const [currentGrid, setCurrentGrid] = useState<GridType | null>(null);
   const [error, setError] = useState<string | null>(null);
