@@ -43,8 +43,8 @@ const App = () => {
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 p-4 space-y-4">
       <h1 className="text-2xl font-bold mb-4">Sudoku Solver</h1>
       <div className="flex gap-4 mb-4">
-        <Button onClick={handleLoad} variant="primary">Laden</Button>
-        <Button onClick={handleSolve} variant="secondary">Lösen</Button>
+        <Button onClick={handleLoad} variant="loadButton">Laden</Button>
+        <Button onClick={handleSolve} variant="solveButton">Lösen</Button>
       </div>
       {error && <div className="text-red-500 mb-2">{error}</div>}
       {initialGrid && currentGrid && (
