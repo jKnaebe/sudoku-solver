@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SudokuGrid from './components/SudokuGrid';
+import Button from './components/Button'; 
 import { fetchSudoku } from './services/SudokuService';
 import { solveSudoku } from './logic/SudokuSolver';
 import type { SudokuGrid as GridType } from './types/Sudoku';
@@ -39,18 +40,12 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 p-4 space-y-4">
       <h1 className="text-2xl font-bold mb-4">Sudoku Solver</h1>
       <div className="flex gap-4 mb-4">
-        <button
-          onClick={handleLoad}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-        >
+        <Button onClick={handleLoad} variant="primary">
           Laden
-        </button>
-        <button
-          onClick={handleSolve}
-          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
-        >
+        </Button>
+        <Button onClick={handleSolve} variant="secondary">
           Lösen
-        </button>
+        </Button>
       </div>
       {error && <div className="text-red-500 mb-2">{error}</div>}
       {initialGrid && currentGrid && (
