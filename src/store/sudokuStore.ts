@@ -7,16 +7,16 @@ interface SudokuStore {
   initialGrid: SudokuGrid | null;
   currentGrid: SudokuGrid | null;
   error: string | null;
-  loadRandomSudoku: () => Promise<void>;
-  solve: () => void;
+  handleLoad: () => Promise<void>;
+  handleSolve: () => void;
 }
 
-const useSudokuStore = create<SudokuStore>((set, get) => ({
+export const useSudokuStore = create<SudokuStore>((set, get) => ({
     initialGrid: null,
     currentGrid: null,
     error: null,
     
-    loadRandomSudoku: async () => {
+    handleLoad: async () => {
         try {
         const response = await fetch('/sudokuList.json');
         const sudokuFiles: string[] = await response.json();
@@ -37,7 +37,7 @@ const useSudokuStore = create<SudokuStore>((set, get) => ({
         }
     },
     
-    solve: () => {
+    handleSolve: () => {
         const { currentGrid } = get();
         if (!currentGrid) return;
     
@@ -48,5 +48,5 @@ const useSudokuStore = create<SudokuStore>((set, get) => ({
         set({ error: 'Sudoku konnte nicht gelöst werden.' });
         }
     },
-    }));
+}));
 
