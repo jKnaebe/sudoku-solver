@@ -6,14 +6,12 @@ interface ButtonProps {
   className?: string;
 }
 
-const baseClasses = "py-2 px-4 rounded-full font-semibold transition-colors";
-
 const Button  = ({
   onClick,
   children,
   className = '',
 }: ButtonProps) => {
-  const combinedClassName = `${baseClasses} ${className}`;
+  const combinedClassName = `py-2 px-4 rounded-full font-semibold transition-colors duration-300</duration-300> ${className}`;
 
   return (
     <button onClick={onClick} className={combinedClassName}>
