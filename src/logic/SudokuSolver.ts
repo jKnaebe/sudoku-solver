@@ -81,8 +81,8 @@ function getCandidates(grid: number[][], row: number, col: number): number[] {
   const used = new Set<number>();
 
   for (let i = 0; i < 9; i++) {
-    used.add(grid[row][i]); // Row
-    used.add(grid[i][col]); // Column
+    used.add(grid[row][i]);
+    used.add(grid[i][col]);
   }
 
   const blockRow = Math.floor(row / 3) * 3;
