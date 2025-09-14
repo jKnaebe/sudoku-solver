@@ -1,5 +1,6 @@
 export async function fetchSudoku(filename: string): Promise<number[][]> {
-  const response = await fetch(`/${filename}`);
+  const base = import.meta.env.BASE_URL;
+  const response = await fetch(`/${base}${filename}`);
 
   if (!response.ok) {
     throw new Error(`Fehler beim Laden der Datei ${filename}: ${response.statusText}`);
