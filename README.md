@@ -18,6 +18,8 @@ This project provides a web application to generate and solve Sudoku puzzles.
 Users can input their own Sudoku or generate one randomly. 
 The solver then computes and displays a valid solution.
 
+<img src='./public/images/Screenshot_UI.png' alt='Image of the UI' width='30%'>
+
 ---
 
 ## Architetcture & Technologies
